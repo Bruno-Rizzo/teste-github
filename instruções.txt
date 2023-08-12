@@ -1,0 +1,38 @@
+1 - Adicionar ao .env 
+
+WWWGROUP=1000
+WWWUSER=1000
+
+2 - Enviar para o github o .env (comentar no gitignore)
+
+3 - No Ubuntu Server após todas as atualizações como root instalar o docker (snap)
+
+4 - Clonar o projeto para a pasta desejada
+
+5 - Acessar a pasta do projeto e dentro dela rodar os comnandos do Docker Sail
+
+	docker run --rm \
+    		-u "$(id -u):$(id -g)" \
+    		-v "$(pwd):/var/www/html" \
+    		-w /var/www/html \
+   		laravelsail/php82-composer:latest \
+    		composer install --ignore-platform-reqs
+
+6 - Editar o bash do Ubuntu adicionando o 'alias' do sail
+
+	nano ~/.bashrc
+
+	alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
+7 - Reiniciar o Ubuntu para a alteração fazer efeito
+
+8 - Na pasta do projeto adicionar permissão à pasta 'storage'
+
+	sudo chmod o+w ./storage/ -R
+
+9 - Para subir as imagens , digitar dentro do projeto 'sail up -d'
+
+10 - Para atualizar o projeto com o repositório web digitar:
+
+	git pull origin master
+	
