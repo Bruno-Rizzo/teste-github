@@ -32,7 +32,16 @@ WWWUSER=1000
 
 9 - Para subir as imagens , digitar dentro do projeto 'sail up -d'
 
-10 - Para atualizar o projeto com o repositório web digitar:
+10 - Caso apresente erro de script deprecado, ou node versão antiga, basta adicionar em no
+     docker-compose.yml a versão do node a ser baixada, ex:
+
+     args:
+            WWWGROUP: '${WWWGROUP}'
+            NODE_VERSION: '20'
+
+11 - Em caso de projetos que utilizam o vite, após clonar rodar o comando  sail npm install
+
+12 - Para atualizar o projeto com o repositório web digitar:
 
 	git pull origin master
 	
